@@ -15,3 +15,5 @@ export default function Todo({ todo, toggleTodo }) {
     </div>
   )
 }
+
+//here we create the checkboxes

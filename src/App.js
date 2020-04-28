@@ -1,8 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react'; 
 import TodoList from './TodoList'
-import uuidv4 from 'uuid/v4'
+import uuidv4 from 'uuid/v4' 
 
-const LOCAL_STORAGE_KEY = 'todoApp.todos'
+//npm i uuid -> function that generates random ids
+// useEffect() -> use everytime the array change, it will keep our todos to the LOCAL_STORAGE_KEY
+
+
+const LOCAL_STORAGE_KEY = 'todoApp.todos' // we save it here with the useEffect()
+//without json we would have warnings and errors
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -14,7 +19,7 @@ function App() {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))  //save the todos with strings json
   }, [todos])
 
   function toggleTodo(id) {
@@ -38,9 +43,9 @@ function App() {
     setTodos(newTodos)
   }
 
-  return (
+  return (   //basic html we have in our apps | we pass props -> todos={todos}
     <>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} />  
       <input ref={todoNameRef} type="text" />
       <button onClick={handleAddTodo}>Add Todo</button>
       <button onClick={handleClearTodos}>Clear Complete</button>
@@ -50,3 +55,5 @@ function App() {
 }
 
 export default App;
+
+
